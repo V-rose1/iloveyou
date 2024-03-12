@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i love you </title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/736x/19/67/ab/1967abd1df85721314ee011151baf386.jpg');
+            background-size: 1368px 609px; /* Optional: Scale the background image to cover the entire body */
+            background-repeat: no-repeat; /* Optional: Prevent the background image from repeating */
+            padding: 1;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .draggable {
+            left: 529px;
+            top: 145px;
+            position: absolute;
+            cursor: move;
+            width: 305px;
+            height: 305px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: 2px solid #b34c5d; /* Border color and thickness */
+            padding: 5px; /* Adjust padding as needed */
+            border-radius: 10px; /* Adjust border radius for rounded corners */
+            overflow: hidden; /* Ensures border radius is applied */
+            display: block;
+            filter:grayscale(70%);
+        }
+        .draggable:hover{
+            left: 520px;
+            top: 140px;
+            width: 330px;
+            height: 330px;
+            filter: grayscale(0%);
+        }
+        .cell {
+            position: absolute;
+            top: 230px;
+            left: 538px;
+            background: #a02357;
+            width: 300px;
+            height: 150px;
+            border-radius: 20px;
+            border: 2px solid rgb(0, 0, 0);
+        }
+
+        .cell h5 {
+            font-family: 'Brush Script MT', cursive;
+            color: white;
+            text-align: center;
+            font-size: large;
+        }
+
+        .yes {
+            height: 60px;
+            width: 145px;
+            color: rgb(255, 255, 255); /* Changed text color to white for better visibility */
+            background: #b60a43; 
+            border-radius: 15px; /* Creating a circular shape */
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+            size: 30px;
+        }
+        .yes:hover{
+            scale: 2 2 50%;
+            box-shadow: 0px 0px 100px 100px rgb(27, 209, 87);
+            background-color: rgb(27,209,87);
+        }
+        .no{
+          height: 60px;
+          width: 145px;
+          color: rgb(255, 255, 255);
+          background: #b60a43;
+          border-radius: 15px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .no:hover{
+            scale: 70%;
+            box-shadow: 0px 0px 100px 100px rgb(0, 0, 0);
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="cell">
+        <h5>Do You Love Me</h5>
+        <a href="https://wa.me/+919507640461?text=yes"><button title="Welcome to my life" class="yes" onclick="sendAnswer('Yes')">yes</button></a>
+        <button title="think again " class="no" onclick="sendAnswer('No')">no</button>
+    </div>
+   <div class="container" id="container">
+        <img src="https://img.freepik.com/free-vector/hand-drawn-are-you-ready-lettering-design_23-2149456783.jpg" class="draggable" width="100" height="100">
+        <img src="https://lemonadamedia.com/wp-content/uploads/2023/08/INTAYS_FINAL_1400.png" class="draggable" width="100" height="100"> 
+        <img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/30971.png" class="draggable" width="100" height="100">
+        <img src="https://previews.123rf.com/images/noravector/noravector1603/noravector160300085/54364944-you-are-so-cute-comic-book-style-word-on-comic-book-abstract-background.jpg" class="draggable" width="100" height="100">
+        <img src="https://media.istockphoto.com/id/1359079726/photo/did-you-know-concept-with-a-male-hand-writing-on-chalkboard.webp?b=1&s=170667a&w=0&k=20&c=YFQdO3YqWFNU86m4OyRuJBlOYSyh6ArluGBN2xu2u3M=" class="draggable" width="100" height="100">
+        <img src="https://i0.wp.com/sociallover.net/wp-content/uploads/2017/05/Hi-animated-hd-images-for-facebook.png" class="draggable" width="100" height="100">
+           
+    </div>
+    <script>
+        var draggables = document.querySelectorAll('.draggable');
+            draggables.forEach(function (draggable) {
+            makeDraggable(draggable);
+            });
+
+        function makeDraggable(element) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        element.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            element.style.top = (element.offsetTop - pos2) + "px";
+            element.style.left = (element.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+    </script>
+</body>
+</html>
